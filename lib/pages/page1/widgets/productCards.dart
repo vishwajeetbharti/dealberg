@@ -6,13 +6,23 @@ class ProductCard extends StatelessWidget {
       required this.width,
       required this.height,
       required this.top,
+      required this.onTap,
       required this.pName,
+      required this.discription,
       required this.price,
-      required this.description});
+      this.quantity = '',
+      required this.onTapDec,
+      required this.negativeButton});
   final double width;
   final double height;
   final double top;
-  final String pName, price, description;
+  final String pName;
+  final String discription;
+  final String price;
+  final Function onTap;
+  final Function onTapDec;
+  final String quantity;
+  final bool negativeButton;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +51,7 @@ class ProductCard extends StatelessWidget {
               left: width * 0.03,
             ),
             child: Text(
-              description,
+              discription,
               style: const TextStyle(fontSize: 15, color: Colors.white),
             ),
           ),
@@ -55,22 +65,63 @@ class ProductCard extends StatelessWidget {
               style: const TextStyle(fontSize: 25, color: Colors.white),
             ),
           ),
-          Container(
+          Visibility(
+            visible: negativeButton,
+            child: Container(
               margin: EdgeInsets.only(
                 top: height * 0.8,
-                left: width * 0.7,
+                left: width * 0.4,
               ),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white54),
+                  borderRadius: const BorderRadius.all(Radius.circular(20))),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  onTapDec();
+                },
                 style: ButtonStyle(
                   overlayColor:
                       MaterialStatePropertyAll<Color>(Colors.grey.shade100),
                 ),
                 child: const Text(
-                  'Add to cart',
+                  '-',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
-              )),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: height * 0.85,
+              left: width * 0.62,
+            ),
+            child: Text(
+              quantity,
+              style: const TextStyle(fontSize: 25, color: Colors.white),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: height * 0.8,
+              left: width * 0.7,
+            ),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white54),
+                borderRadius: const BorderRadius.all(Radius.circular(20))),
+            child: TextButton(
+              onPressed: () {
+                onTap();
+              },
+              style: ButtonStyle(
+                overlayColor:
+                    MaterialStatePropertyAll<Color>(Colors.grey.shade100),
+              ),
+              child: const Text(
+                'Add to cart',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ),
         ],
       ),
     );

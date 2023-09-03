@@ -9,5 +9,6 @@ class LoadingState extends StateBloc {
 
 class AllProducts extends StateBloc {
   List<DealProducts> allProducts;
+
   AllProducts({required this.allProducts});
 }
