@@ -21,9 +21,10 @@ class SearchContainer extends StatelessWidget {
       height: height,
       width: width,
       margin: EdgeInsets.only(top: top),
-      decoration: const BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.black),
+          borderRadius: const BorderRadius.all(Radius.circular(20))),
       child: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: TextFormField(
@@ -33,7 +34,7 @@ class SearchContainer extends StatelessWidget {
             hintText: Strings.search,
             hintStyle: TextStyle(
               fontSize: width * 0.041,
-              color: Colors.white,
+              color: Colors.grey,
             ),
             suffixIcon: const Icon(Icons.search_rounded),
             suffixIconColor: Colors.black,

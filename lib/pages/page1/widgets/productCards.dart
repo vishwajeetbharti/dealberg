@@ -29,117 +29,135 @@ class ProductCard extends StatelessWidget {
   final bool negativeButton;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      margin: EdgeInsets.only(top: top),
-      decoration: const BoxDecoration(
-        color: Colors.black26,
-        borderRadius: BorderRadius.all(
-          Radius.circular(15),
+    return Column(
+      children: [
+        Container(
+          height: height * 0.65,
+          width: width,
+          margin: EdgeInsets.only(top: top),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+            image: DecorationImage(
+              image: NetworkImage(imageLink),
+            ),
+          ),
         ),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            height: height * 0.6,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(imageLink),
-              ),
-            ),
+        Container(
+          width: width,
+          height: 1,
+          color: Colors.black,
+        ),
+        Container(
+          width: width,
+          height: height * 0.5,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(15)),
           ),
-          Container(
-            margin: EdgeInsets.only(
-              top: height * 0.6,
-              left: width * 0.03,
-            ),
-            child: Text(
-              pName,
-              style: TextStyle(fontSize: width * 0.05, color: Colors.black87),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              top: height * 0.69,
-              left: width * 0.03,
-            ),
-            child: Text(
-              discription,
-              style: TextStyle(fontSize: width * 0.03, color: Colors.black87),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              top: height * 0.85,
-              left: width * 0.03,
-            ),
-            child: Text(
-              price,
-              style: TextStyle(fontSize: width * 0.05, color: Colors.black87),
-            ),
-          ),
-          Visibility(
-            visible: negativeButton,
-            child: Container(
-              margin: EdgeInsets.only(
-                top: height * 0.81,
-                left: width * 0.4,
-              ),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black87),
-                  borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: TextButton(
-                onPressed: () {
-                  onTapDec();
-                },
-                style: ButtonStyle(
-                  overlayColor:
-                      MaterialStatePropertyAll<Color>(Colors.grey.shade100),
+          child: Stack(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                  top: height * 0.04,
+                  left: width * 0.03,
                 ),
                 child: Text(
-                  '-',
+                  pName,
                   style:
-                      TextStyle(color: Colors.black87, fontSize: width * 0.05),
+                      TextStyle(fontSize: width * 0.05, color: Colors.black87),
                 ),
               ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              top: height * 0.85,
-              left: width * 0.62,
-            ),
-            child: Text(
-              quantity,
-              style: TextStyle(fontSize: width * 0.05, color: Colors.black87),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              top: height * 0.81,
-              left: width * 0.7,
-            ),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black87),
-                borderRadius: const BorderRadius.all(Radius.circular(20))),
-            child: TextButton(
-              onPressed: () {
-                onTap();
-              },
-              style: ButtonStyle(
-                overlayColor:
-                    MaterialStatePropertyAll<Color>(Colors.grey.shade100),
+              Container(
+                margin: EdgeInsets.only(
+                  top: height * 0.15,
+                  left: width * 0.03,
+                ),
+                child: Text(
+                  discription,
+                  style:
+                      TextStyle(fontSize: width * 0.03, color: Colors.black87),
+                ),
               ),
-              child: Text(
-                Strings.addToCart,
-                style: TextStyle(color: Colors.black87, fontSize: width * 0.05),
+              Container(
+                margin: EdgeInsets.only(
+                  top: height * 0.3,
+                  left: width * 0.03,
+                ),
+                child: Text(
+                  price,
+                  style:
+                      TextStyle(fontSize: width * 0.05, color: Colors.black87),
+                ),
               ),
-            ),
+              Visibility(
+                visible: negativeButton,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    top: height * 0.3,
+                    left: width * 0.4,
+                  ),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black87),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
+                  child: TextButton(
+                    onPressed: () {
+                      onTapDec();
+                    },
+                    style: ButtonStyle(
+                      overlayColor:
+                          MaterialStatePropertyAll<Color>(Colors.grey.shade100),
+                    ),
+                    child: Text(
+                      '-',
+                      style: TextStyle(
+                          color: Colors.black87, fontSize: width * 0.05),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: height * 0.35,
+                  left: width * 0.62,
+                ),
+                child: Text(
+                  quantity,
+                  style:
+                      TextStyle(fontSize: width * 0.05, color: Colors.black87),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: height * 0.3,
+                  left: width * 0.7,
+                ),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black87),
+                    borderRadius: const BorderRadius.all(Radius.circular(20))),
+                child: TextButton(
+                  onPressed: () {
+                    onTap();
+                  },
+                  style: ButtonStyle(
+                    overlayColor:
+                        MaterialStatePropertyAll<Color>(Colors.grey.shade100),
+                  ),
+                  child: Text(
+                    Strings.addToCart,
+                    style: TextStyle(
+                        color: Colors.black87, fontSize: width * 0.05),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
