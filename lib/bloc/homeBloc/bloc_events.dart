@@ -8,7 +8,8 @@ class InitialEvent extends EventBloc {
 
 class AddToCart extends EventBloc {
   DealProducts prod;
-  AddToCart({required this.prod});
+  String imgLink;
+  AddToCart({required this.prod, required this.imgLink});
 }
 
 class RmvToCart extends EventBloc {
@@ -18,4 +19,9 @@ class RmvToCart extends EventBloc {
 
 class SentToCart extends EventBloc {
   SentToCart();
+}
+
+class SearchProduct extends EventBloc {
+  String key;
+  SearchProduct({required this.key});
 }

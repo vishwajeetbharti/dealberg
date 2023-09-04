@@ -2,9 +2,9 @@ part of 'cartBloc.dart';
 
 abstract class CartState {}
 
-class LoadingState extends CartState {
+class LoadingCartState extends CartState {
   String error;
-  LoadingState({required this.error});
+  LoadingCartState({required this.error});
 }
 
 class CartProducts extends CartState {

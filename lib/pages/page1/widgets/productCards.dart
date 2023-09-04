@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../Utils/constants.dart';
+
 class ProductCard extends StatelessWidget {
   const ProductCard(
       {super.key,
@@ -12,7 +14,8 @@ class ProductCard extends StatelessWidget {
       required this.price,
       this.quantity = '',
       required this.onTapDec,
-      required this.negativeButton});
+      required this.negativeButton,
+      required this.imageLink});
   final double width;
   final double height;
   final double top;
@@ -22,6 +25,7 @@ class ProductCard extends StatelessWidget {
   final Function onTap;
   final Function onTapDec;
   final String quantity;
+  final String imageLink;
   final bool negativeButton;
   @override
   Widget build(BuildContext context) {
@@ -31,10 +35,21 @@ class ProductCard extends StatelessWidget {
       margin: EdgeInsets.only(top: top),
       decoration: const BoxDecoration(
         color: Colors.black26,
-        borderRadius: BorderRadius.all(Radius.circular(15)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
       ),
       child: Stack(
         children: [
+          Container(
+            height: height * 0.6,
+            width: width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(imageLink),
+              ),
+            ),
+          ),
           Container(
             margin: EdgeInsets.only(
               top: height * 0.6,
@@ -42,17 +57,17 @@ class ProductCard extends StatelessWidget {
             ),
             child: Text(
               pName,
-              style: const TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: width * 0.05, color: Colors.black87),
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: height * 0.68,
+              top: height * 0.69,
               left: width * 0.03,
             ),
             child: Text(
               discription,
-              style: const TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontSize: width * 0.03, color: Colors.black87),
             ),
           ),
           Container(
@@ -62,18 +77,18 @@ class ProductCard extends StatelessWidget {
             ),
             child: Text(
               price,
-              style: const TextStyle(fontSize: 25, color: Colors.white),
+              style: TextStyle(fontSize: width * 0.05, color: Colors.black87),
             ),
           ),
           Visibility(
             visible: negativeButton,
             child: Container(
               margin: EdgeInsets.only(
-                top: height * 0.8,
+                top: height * 0.81,
                 left: width * 0.4,
               ),
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white54),
+                  border: Border.all(color: Colors.black87),
                   borderRadius: const BorderRadius.all(Radius.circular(20))),
               child: TextButton(
                 onPressed: () {
@@ -83,9 +98,10 @@ class ProductCard extends StatelessWidget {
                   overlayColor:
                       MaterialStatePropertyAll<Color>(Colors.grey.shade100),
                 ),
-                child: const Text(
+                child: Text(
                   '-',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style:
+                      TextStyle(color: Colors.black87, fontSize: width * 0.05),
                 ),
               ),
             ),
@@ -97,16 +113,16 @@ class ProductCard extends StatelessWidget {
             ),
             child: Text(
               quantity,
-              style: const TextStyle(fontSize: 25, color: Colors.white),
+              style: TextStyle(fontSize: width * 0.05, color: Colors.black87),
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: height * 0.8,
+              top: height * 0.81,
               left: width * 0.7,
             ),
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white54),
+                border: Border.all(color: Colors.black87),
                 borderRadius: const BorderRadius.all(Radius.circular(20))),
             child: TextButton(
               onPressed: () {
@@ -116,9 +132,9 @@ class ProductCard extends StatelessWidget {
                 overlayColor:
                     MaterialStatePropertyAll<Color>(Colors.grey.shade100),
               ),
-              child: const Text(
-                'Add to cart',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              child: Text(
+                Strings.addToCart,
+                style: TextStyle(color: Colors.black87, fontSize: width * 0.05),
               ),
             ),
           ),
